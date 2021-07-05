@@ -122,4 +122,4 @@ TODO
 ---
 
 - Websocket API documentation using [AsyncAPI](https://asyncapi.com)
-- UI implementation
+- UI implementation [UI impl ideas](priv/ui.md)
