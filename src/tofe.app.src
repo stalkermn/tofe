@@ -1,0 +1,22 @@
+{application, tofe,
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {tofe_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    goldrush,
+    lager,
+    jiffy,
+    ranch,
+    cowboy,
+    cowlib,
+    fancyflow
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.

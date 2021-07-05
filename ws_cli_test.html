@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)chrome-extension://lifhekgaodigcpmnakfhaaaboididbdn/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Web Socket Client</title>
+    <link rel="stylesheet" type="text/css" href="chrome-extension://lifhekgaodigcpmnakfhaaaboididbdn/index.css">
+    <script type="text/javascript" src="chrome-extension://lifhekgaodigcpmnakfhaaaboididbdn/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="chrome-extension://lifhekgaodigcpmnakfhaaaboididbdn/index.js"></script>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="controls closed">
+        <div class="control-pane">
+          <table>
+            <tbody><tr>
+              <th>Status:</th>
+              <td class="status"></td>
+            </tr>
+            <tr>
+              <th>URL:</th>
+              <td><input type="text" id="endpoint" value="ws://localhost/"></td>
+            </tr>
+            <tr>
+              <th>Protocol(s):</th>
+              <td><input type="text" id="protocols" value=""></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><label><input type="checkbox" value="1" id="reconnect"> Auto-Reconnect</label></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <input type="submit" id="btn_connect" value="Connect">
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+        <div class="control-pane">
+          <table>
+            <tbody><tr>
+              <th>&nbsp;</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Close Status:</th>
+              <td><input type="text" id="close_status" value="1000" disabled="disabled"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td id="close_status_text">NORMAL</td>
+            </tr>
+            <tr>
+              <th>Close Reason:</th>
+              <td><input type="text" id="close_reason" value="" disabled="disabled"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input type="submit" id="btn_close" value="Close" disabled="disabled"></td>
+            </tr>
+          </tbody></table>
+        </div>
+        <div class="control-pane">
+          <table>
+            <tbody><tr>
+              <th style="text-align: left;">Message Text</th>
+            </tr>
+            <tr>
+              <td><textarea id="message_text" disabled="disabled"></textarea></td>
+            </tr>
+            <tr>
+              <td><input type="submit" id="btn_send" value="Send" disabled="disabled"></td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div> <!-- /controls -->
+      <div class="log">
+        <input type="submit" id="btn_clear_log" value="Clear">
+        <div class="entries">
+        <div class="entry" timestamp="1625488121562"><div class="publisher console"><div class="timestamp">8 min ago</div></div><div class="content text">Welcome! You may initiate and manage a web socket connection using the controls above. Messages sent and received will appear in this log.</div></div><div class="entry" timestamp="1625488132449"><div class="publisher system"><div class="timestamp">8 min ago</div></div><div class="content text">Attempt to connect to 'ws://localhost:8080/ws/testusername'...</div></div><div class="entry" timestamp="1625488132455"><div class="publisher system"><div class="timestamp">8 min ago</div></div><div class="content text">The connection was established successfully (in 5 ms).
+</div></div><div class="entry" timestamp="1625488145237"><div class="publisher local"><div class="timestamp">7 min ago</div></div><div class="content text">{"action":"list_games"}</div></div><div class="entry" timestamp="1625488145239"><div class="publisher remote"><div class="timestamp">7 min ago</div></div><div class="content text">{"payload":[],"event":"list_games"}</div></div><div class="entry" timestamp="1625488161805"><div class="publisher local"><div class="timestamp">7 min ago</div></div><div class="content text">{"action":"new_game", "payload":{}}</div></div><div class="entry" timestamp="1625488161807"><div class="publisher remote"><div class="timestamp">7 min ago</div></div><div class="content text">{"payload":{"players":["testusername"],"grid":[[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,2],[null,2,null,2,null,null,null,null],[null,null,null,null,null,null,4,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null]],"chat_history":[]},"event":"game"}</div></div><div class="entry" timestamp="1625488178299"><div class="publisher local"><div class="timestamp">7 min ago</div></div><div class="content text">{"action":"new_game", "payload":{}}</div></div><div class="entry" timestamp="1625488178301"><div class="publisher remote"><div class="timestamp">7 min ago</div></div><div class="content text">{"payload":{"players":["testusername"],"grid":[[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[4,null,null,null,null,null,null,null],[2,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,4],[null,null,null,null,null,null,null,null],[null,null,null,2,null,null,null,null]],"chat_history":[]},"event":"game"}</div></div><div class="entry" timestamp="1625488196460"><div class="publisher local"><div class="timestamp">7 min ago</div></div><div class="content text">{"action":"list_games"}</div></div><div class="entry" timestamp="1625488196463"><div class="publisher remote"><div class="timestamp">7 min ago</div></div><div class="content text">{"payload":["2048game-bc5612329177fa055aee","2048game-953ced6b3280b8e2753e"],"event":"list_games"}</div></div><div class="entry" timestamp="1625488256464"><div class="publisher system"><div class="timestamp">6 min ago</div></div><div class="content text">The connection was terminated uncleanly with status code 1000 (NORMAL).
+</div></div><div class="entry" timestamp="1625488267028"><div class="publisher system"><div class="timestamp">5 min ago</div></div><div class="content text">Attempt to connect to 'ws://localhost:8080/ws/testusername'...</div></div><div class="entry" timestamp="1625488267034"><div class="publisher system"><div class="timestamp">5 min ago</div></div><div class="content text">The connection was established successfully (in 6 ms).
+</div></div><div class="entry" timestamp="1625488268044"><div class="publisher local"><div class="timestamp">5 min ago</div></div><div class="content text">{"action":"list_games"}</div></div><div class="entry" timestamp="1625488268047"><div class="publisher remote"><div class="timestamp">5 min ago</div></div><div class="content text">{"payload":["2048game-953ced6b3280b8e2753e"],"event":"list_games"}</div></div><div class="entry" timestamp="1625488316053"><div class="publisher local"><div class="timestamp">5 min ago</div></div><div class="content text">{"action":"join_game", "payload": {"name": "2048game-953ced6b3280b8e2753e"} }</div></div><div class="entry" timestamp="1625488316056"><div class="publisher remote"><div class="timestamp">5 min ago</div></div><div class="content text">{"payload":{"players":["testusername"],"grid":[[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,2],[null,2,null,2,null,null,null,null],[null,null,null,null,null,null,4,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null]],"chat_history":[]},"event":"game"}</div></div><div class="entry" timestamp="1625488346497"><div class="publisher local"><div class="timestamp">4 min ago</div></div><div class="content text">{"action":"move", "payload": {"move": "up"} }</div></div><div class="entry" timestamp="1625488346504"><div class="publisher remote"><div class="timestamp">4 min ago</div></div><div class="content text">{"payload":[[null,2,null,2,null,null,4,2],[null,null,null,2,null,null,2,null],[null,null,2,null,4,null,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,2,null,null],[null,null,null,null,null,null,null,null],[null,null,null,null,null,null,2,null],[null,null,4,2,null,null,null,null]],"event":"move"}</div></div><div class="entry" timestamp="1625488356379"><div class="publisher local"><div class="timestamp">4 min ago</div></div><div class="content text">{"action":"move", "payload": {"move": "down"} }</div></div><div class="entry" timestamp="1625488356381"><div class="publisher remote"><div class="timestamp">4 min ago</div></div><div class="content text">{"payload":[[null,null,null,null,null,null,null,null],[null,4,null,null,null,2,null,null],[null,null,null,4,null,null,null,2],[null,2,2,null,null,null,null,4],[null,null,null,null,null,null,null,null],[null,null,null,null,null,4,null,null],[null,null,2,2,null,null,4,null],[null,2,4,4,4,2,4,2]],"event":"move"}</div></div><div class="entry" timestamp="1625488363235"><div class="publisher local"><div class="timestamp">4 min ago</div></div><div class="content text">{"action":"move", "payload": {"move": "left"} }</div></div><div class="entry" timestamp="1625488363237"><div class="publisher remote"><div class="timestamp">4 min ago</div></div><div class="content text">{"payload":[[null,null,null,null,2,null,null,2],[4,2,null,null,null,null,4,2],[4,2,null,null,null,null,null,null],[4,4,2,null,null,null,null,null],[2,null,null,null,null,null,null,2],[4,null,null,null,null,null,null,2],[4,4,null,null,null,null,null,null],[2,8,4,2,4,2,null,null]],"event":"move"}</div></div><div class="entry" timestamp="1625488368462"><div class="publisher local"><div class="timestamp">4 min ago</div></div><div class="content text">{"action":"move", "payload": {"move": "right"} }</div></div><div class="entry" timestamp="1625488368466"><div class="publisher remote"><div class="timestamp">4 min ago</div></div><div class="content text">{"payload":[[null,null,null,null,null,2,null,4],[null,4,2,null,4,2,4,2],[null,null,null,null,null,null,4,2],[null,null,null,null,null,null,8,2],[null,null,null,null,null,null,null,4],[null,2,null,null,null,2,4,2],[2,null,null,null,2,null,null,8],[null,2,2,8,4,2,4,2]],"event":"move"}</div></div><div class="entry" timestamp="1625488397607"><div class="publisher local"><div class="timestamp">3 min ago</div></div><div class="content text">{"action":"message", "payload": {"message": "hello world"} }</div></div><div class="entry" timestamp="1625488397610"><div class="publisher remote"><div class="timestamp">3 min ago</div></div><div class="content text">{"payload":{"testusername":"hello world"},"event":"message"}</div></div><div class="entry" timestamp="1625488413070"><div class="publisher local"><div class="timestamp">3 min ago</div></div><div class="content text">{"action":"message", "payload": {"message": "hello world 2"} }</div></div><div class="entry" timestamp="1625488413072"><div class="publisher remote"><div class="timestamp">3 min ago</div></div><div class="content text">{"payload":{"testusername":"hello world 2"},"event":"message"}</div></div><div class="entry" timestamp="1625488473073"><div class="publisher system"><div class="timestamp">2 min ago</div></div><div class="content text">The connection was terminated uncleanly with status code 1000 (NORMAL).
+</div></div></div>
+      </div> <!-- /log -->
+    </div> <!-- /frame -->
+  
+</body></html>
