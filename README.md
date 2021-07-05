@@ -3,13 +3,14 @@ tofe
 
 An OTP application provides an websocket API for a time consuming game 2048
 
-`tofe_app` is a main app behaviour module implementing callbacks from [https://erlang.org/doc/apps/kernel/application.html](application behaviour)
+
+`tofe_app` is a main app behaviour module implementing callbacks from [application behaviour](https://erlang.org/doc/apps/kernel/application.html)
 
 `tofe_sup` is a main supervisor. This supervisor is managing `tofe_game_sup` which is is general is responsible about game processes
 
-`tofe_game` is a game managing process based on [https://erlang.org/doc/man/gen_server.html](Generic Server) which is managing all the game part, players and keeps game and chat history state
+`tofe_game` is a game managing process based on [Generic Server](https://erlang.org/doc/man/gen_server.html) which is managing all the game part, players and keeps game and chat history state
 
-`tofe_ws` is a websocket handler implements callbacks from [https://ninenines.eu/docs/en/cowboy/2.4/guide/ws_handlers/](Websocket Handler) and manages a ws connection to the app
+`tofe_ws` is a websocket handler implements callbacks from [Websocket Handler](https://ninenines.eu/docs/en/cowboy/2.4/guide/ws_handlers/) and manages a ws connection to the app
 
 `tofe_protocol` is a functional API for gaming purposes, encapsulate the gen_server communication
 
@@ -122,3 +123,5 @@ TODO
 
 - Websocket API documentation using [asyncapi.com](AsyncAPI)
 - UI implementation
+
+[asd]: https://erlang.org/doc/apps/kernel/application.html
