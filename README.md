@@ -99,3 +99,26 @@ see `all/0` definitions of cases.
       |                 total  |       90%  |
       |------------------------|------------|
       
+      
+Release
+---
+
+Perform release packaging
+
+    $ ./rebar3 release
+
+Run application from release
+
+    $ ./_build/default/rel/tofe/bin/tofe {boot command}
+    
+    Usage: tofe {start|start_boot <file>|foreground|stop|restart|reboot
+    |pid|ping|console|console_clean|console_boot <file>|attach|remote_console
+    |upgrade|downgrade|install|uninstall|versions|escript|rpc|rpcterms
+    |eval|status|undefined}
+    
+    
+TODO
+---
+
+- Websocket API documentation using [asyncapi.com](AsyncAPI)
+- UI implementation
