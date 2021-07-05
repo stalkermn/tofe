@@ -123,5 +123,3 @@ TODO
 
 - Websocket API documentation using [asyncapi.com](AsyncAPI)
 - UI implementation
-
-[asd]: https://erlang.org/doc/apps/kernel/application.html
