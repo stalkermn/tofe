@@ -121,5 +121,5 @@ Run application from release
 TODO
 ---
 
-- Websocket API documentation using [asyncapi.com](AsyncAPI)
+- Websocket API documentation using [AsyncAPI](https://asyncapi.com)
 - UI implementation
