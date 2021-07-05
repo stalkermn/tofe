@@ -151,8 +151,8 @@ grid_cols_fwd_3_test() ->
 grid_has_remaining_moves_1_test() ->
     ?assert(tofe_grid:has_remaining_moves(?grid1_available)).
 
-%%grid_has_remaining_moves_2_test() ->
-%%    ?assert(tofe_grid:has_remaining_moves(?grid2_available)).
+grid_has_remaining_moves_2_test() ->
+    ?assert(tofe_grid:has_remaining_moves(?grid2_available)).
 
 grid_has_remaining_moves_3_test() ->
     ?assertNot(tofe_grid:has_remaining_moves(?grid_3_game_over)).
