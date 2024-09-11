@@ -1,125 +1,153 @@
-tofe
-=====
+# Tofe
 
-An OTP application provides an websocket API for a time consuming game 2048
+An OTP application that provides a websocket API for the time-consuming game, 2048.
 
+## Overview
 
-`tofe_app` is a main app behaviour module implementing callbacks from [application behaviour](https://erlang.org/doc/apps/kernel/application.html)
+- **`tofe_app`**: The main application behavior module, implementing callbacks from the [application behavior](https://erlang.org/doc/apps/kernel/application.html).
+  
+- **`tofe_sup`**: The main supervisor, responsible for managing `tofe_game_sup`, which oversees game processes.
 
-`tofe_sup` is a main supervisor. This supervisor is managing `tofe_game_sup` which is is general is responsible about game processes
+- **`tofe_game`**: A game-managing process based on the [Generic Server](https://erlang.org/doc/man/gen_server.html). It handles game logic, manages players, and maintains the game and chat history.
 
-`tofe_game` is a game managing process based on [Generic Server](https://erlang.org/doc/man/gen_server.html) which is managing all the game part, players and keeps game and chat history state
+- **`tofe_ws`**: A websocket handler implementing callbacks from [Cowboy's WebSocket Handler](https://ninenines.eu/docs/en/cowboy/2.4/guide/ws_handlers/), managing the WebSocket connection.
 
-`tofe_ws` is a websocket handler implements callbacks from [Websocket Handler](https://ninenines.eu/docs/en/cowboy/2.4/guide/ws_handlers/) and manages a ws connection to the app
+- **`tofe_protocol`**: A functional API encapsulating `gen_server` communication for game purposes.
 
-`tofe_protocol` is a functional API for gaming purposes, encapsulate the gen_server communication
+- **`tofe_grid` & `tofe_vector`**: API modules managing grid transitions during the game.
 
-`tofe_grid` and `tofe_vector` is a grid API modules for performing grid transitions during the game 
+- **`tofe_utils`**: A collection of utility functions for various purposes.
 
-`tofe_utils` a set of util functions for different purposes
-
-
-
-Requirements
------
-
-Erlang/OTP 23.0 or higher 
-
-Install Erlang via asdf:
-
-    $ git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
-    $ . $HOME/.asdf/asdf.sh
-    $ asdf plugin add erlang
-    $ asdf install erlang 23.0
-    $ asdf global erlang 23.0
-    
-    
-Build
------
-
-    $ ./rebar3 compile
-
-
-Run
 ---
 
-Run project
+## Requirements
 
-    $ ./rebar3 shell
+- **Erlang/OTP**: Version 23.0 or higher
 
-Run tests and report coverage
+### Install Erlang via asdf:
+```bash
+$ git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
+$ . $HOME/.asdf/asdf.sh
+$ asdf plugin add erlang
+$ asdf install erlang 23.0
+$ asdf global erlang 23.0
+```
 
-    $ ./rebar3 as test do cover --reset, eunit --cover, ct --cover, cover --verbose
-
-Run project with access to test helper libraries
-
-    $ ./rebar3 as test shell
-
-Configs and settings
------
-The `./sys.config` file includes all necessary configuration params required to start an webserver app.
-
-Test cases
------
-
-The tests cases has been written using **Eunit** (for unit testing) and **Common Tests** for more complex cases
-
-##### Eunit
-
-All unit test modules has test prefix in the end of the file name before the ext. 
-
-    $ ./test/*_test.erl
-    
-Unit test coverage were acceptable for grid based modules which are not requires complex management logic between players, etc
-
-##### Common Tests
-
-All remaining tests has been performed by using Common test framework. 
-
-    $ ./test/*_SUITE.erl
-        
-There are `tofe_game` and `tofe_ws` has been covered with multiple players, chats, etc.
-see `all/0` definitions of cases.
-
-
-##### Test coverage
-
-      |------------------------|------------|
-      |                module  |  coverage  |
-      |------------------------|------------|
-      |         tofe_protocol  |      100%  |
-      |           tofe_vector  |      100%  |
-      |             tofe_grid  |      100%  |
-      |              tofe_sup  |      100%  |
-      |         tofe_game_sup  |       73%  |
-      |              tofe_app  |      100%  |
-      |               tofe_ws  |       81%  |
-      |             tofe_game  |       85%  |
-      |            tofe_utils  |      100%  |
-      |------------------------|------------|
-      |                 total  |       90%  |
-      |------------------------|------------|
-      
-      
-Release
 ---
 
-Perform release packaging
+## Build
 
-    $ ./rebar3 release
+```bash
+$ ./rebar3 compile
+```
 
-Run application from release
-
-    $ ./_build/default/rel/tofe/bin/tofe {boot command}
-    
-    Usage: tofe {start|start_boot <file>|foreground|stop|restart|reboot
-    |pid|ping|console|console_clean|console_boot <file>|attach|remote_console
-    |upgrade|downgrade|install|uninstall|versions|escript|rpc|rpcterms
-    |eval|status|undefined}
-    
-    
-TODO
 ---
 
-- Websocket API documentation using [AsyncAPI](https://asyncapi.com)
-- UI implementation [UI impl ideas](priv/ui.md)
+## Run
+
+### Run the project:
+```bash
+$ ./rebar3 shell
+```
+
+### Run tests and report coverage:
+```bash
+$ ./rebar3 as test do cover --reset, eunit --cover, ct --cover, cover --verbose
+```
+
+### Run the project with access to test helper libraries:
+```bash
+$ ./rebar3 as test shell
+```
+
+---
+
+## Configuration
+
+The `./sys.config` file includes all the necessary configuration parameters required to start the webserver app.
+
+---
+
+## Test Cases
+
+The test cases are written using **EUnit** for unit testing and **Common Test** for more complex cases.
+
+### EUnit
+
+All unit test modules have a `_test` suffix before the file extension:
+```bash
+$ ./test/*_test.erl
+```
+
+Unit test coverage is particularly thorough for grid-based modules that do not require complex management logic between players.
+
+### Common Test
+
+More complex tests, such as those covering `tofe_game` and `tofe_ws` with multiple players and chats, are written using the **Common Test** framework:
+```bash
+$ ./test/*_SUITE.erl
+```
+
+See the `all/0` definitions for the test cases.
+
+### Test Coverage Summary
+
+| Module            | Coverage |
+|-------------------|----------|
+| `tofe_protocol`   | 100%     |
+| `tofe_vector`     | 100%     |
+| `tofe_grid`       | 100%     |
+| `tofe_sup`        | 100%     |
+| `tofe_game_sup`   | 73%      |
+| `tofe_app`        | 100%     |
+| `tofe_ws`         | 81%      |
+| `tofe_game`       | 85%      |
+| `tofe_utils`      | 100%     |
+| **Total**         | **90%**  |
+
+---
+
+## Release
+
+### Perform release packaging:
+```bash
+$ ./rebar3 release
+```
+
+### Run the application from release:
+```bash
+$ ./_build/default/rel/tofe/bin/tofe {boot command}
+```
+
+#### Available commands:
+- `start`
+- `start_boot <file>`
+- `foreground`
+- `stop`
+- `restart`
+- `reboot`
+- `pid`
+- `ping`
+- `console`
+- `console_clean`
+- `console_boot <file>`
+- `attach`
+- `remote_console`
+- `upgrade`
+- `downgrade`
+- `install`
+- `uninstall`
+- `versions`
+- `escript`
+- `rpc`
+- `rpcterms`
+- `eval`
+- `status`
+- `undefined`
+
+---
+
+## TODO
+
+- Document the WebSocket API using [AsyncAPI](https://asyncapi.com).
+- Implement the UI ([UI implementation ideas](priv/ui.md)).
